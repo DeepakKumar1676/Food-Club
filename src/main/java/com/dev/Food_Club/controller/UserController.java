@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    @GetMapping("get-response")
-    public String getResponse()
+
+    @GetMapping("get-response1")
+    public String getResponse1()
     {
         return "hellow";
     }
+
+
+
 
 }
