@@ -15,5 +15,10 @@ public class UserController {
 
 
 
+    @GetMapping("response2")
+    public String getResponse2()
+    {
+        return "hellow";
+    }
 
 }
