@@ -1,4 +1,4 @@
-package com.dev.Food_Club.controller;
+package com.dev.Food_Club.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
