@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface RestaurantRepository extends JpaRepository<RestaurantEntity ,Long> {
 
-    public List<RestaurantEntity> findByLocation(String location);
+     List<RestaurantEntity> findByLocation(String location);
 
 }

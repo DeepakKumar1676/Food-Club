@@ -1,10 +1,22 @@
 package com.dev.Food_Club.DTO;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Getter
 @Setter
 
+@JsonPropertyOrder({
+        "id",
+        "restaurantname",
+        "ownername",
+        "location",
+        "openingTime",
+        "closingTime",
+        "rating"
+
+})
 public class RestaurantDto {
     private Long id;
     private String restaurantname;

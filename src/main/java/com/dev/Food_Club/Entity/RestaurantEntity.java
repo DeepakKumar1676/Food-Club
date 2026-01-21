@@ -31,9 +31,7 @@ public class RestaurantEntity {
         this.closingTime = closingTime;
     }
 
-    public RestaurantEntity(){
-
-    }
+    public RestaurantEntity(){}
 
     public String getRestaurantname() {
         return restaurantname;
