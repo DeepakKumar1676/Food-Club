@@ -1,6 +1,7 @@
 package com.dev.Food_Club.Service;
 import com.dev.Food_Club.DTO.MenuDto;
 import com.dev.Food_Club.DTO.RestaurantDto;
+import com.dev.Food_Club.DTO.RestaurantResponseDto;
 import com.dev.Food_Club.Entity.MenuEntity;
 import com.dev.Food_Club.Entity.RestaurantEntity;
 import com.dev.Food_Club.Repository.RestaurantRepository;
@@ -65,6 +66,36 @@ public class RestaurantService{
             }
             restaurantDto.setMenuList(menuDtoArrayList);
         return restaurantDto;
+    }
+
+    //logic when user hit api with restaurant id i am throwing only restaurant id and restaurant name
+
+    public RestaurantResponseDto getRestaurant(Long id){
+
+        RestaurantEntity restaurantEntity=restaurantRepository.findById(id).orElseThrow(()->new RuntimeException("Given Restaurant id is not found pls try again"));
+
+        RestaurantResponseDto responseDto=new RestaurantResponseDto();
+        responseDto.setRestaurantId(restaurantEntity.getRestaurantId());
+        responseDto.setRestaurantname(restaurantEntity.getRestaurantname());
+
+
+        List<MenuDto>menuList=new ArrayList<MenuDto>();
+
+        List<MenuEntity> entities=restaurantEntity.getMenuEntityList();
+        for(MenuEntity entity :entities){
+
+            MenuDto menuDto=new MenuDto();
+            menuDto.setId(entity.getId());
+            menuDto.setName(entity.getName());
+            menuDto.setHalfPlate(entity.getHalfPlate());
+            menuDto.setFullPlate(entity.getFullPlate());
+            menuDto.setHalfPrice(entity.getHalfPrice());
+            menuDto.setFullPrice(entity.getFullPrice());
+            menuList.add(menuDto);
+        }
+        responseDto.setMenuList(menuList);
+        return responseDto;
+
     }
 
 
