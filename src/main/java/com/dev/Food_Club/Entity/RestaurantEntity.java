@@ -2,36 +2,36 @@ package com.dev.Food_Club.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="restaurant_entity")
 public class RestaurantEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-    @Column(name = "restaurantname")
+    @Column(name = "restaurant_id")
+    private Long restaurantId;
     private String restaurantname;
-    @Column(name="ownername")
     private String ownername;
-    @Column(name="location")
     private String location;
-    @Column(name="rating")
     private int rating;
-    @Column(name="openingTime")
+    @Column(name="opening_time")
     private String openingTime;
-    @Column(name="closingTime")
+    @Column(name="closing_time")
     private String closingTime;
 
-    public RestaurantEntity(String restaurantname, String ownername, String location, int rating, String openingTime, String closingTime) {
-        this.restaurantname = restaurantname;
-        this.ownername = ownername;
-        this.location = location;
-        this.rating = rating;
-        this.openingTime = openingTime;
-        this.closingTime = closingTime;
-    }
+    @OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER,mappedBy ="restaurant")
+    private List<MenuEntity> menuEntityList;
 
     public RestaurantEntity(){}
+
+    public List<MenuEntity> getMenuEntityList() {
+        return menuEntityList;
+    }
+
+    public void setMenuEntityList(List<MenuEntity> menuEntityList) {
+        this.menuEntityList = menuEntityList;
+    }
 
     public String getRestaurantname() {
         return restaurantname;
@@ -41,12 +41,12 @@ public class RestaurantEntity {
         this.restaurantname = restaurantname;
     }
 
-    public Long getId() {
-        return id;
+    public Long getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRestaurantId(Long id) {
+        this.restaurantId = restaurantId;
     }
 
     public String getOwnername() {

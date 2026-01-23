@@ -20,7 +20,6 @@ public class MenuService {
       List< MenuEntity> entity=menuRepository.findAll();
 
       List<MenuDto> menuDtoList=new ArrayList<>();
-
         for(MenuEntity entites: entity){
 
             MenuDto menuDto =new MenuDto();

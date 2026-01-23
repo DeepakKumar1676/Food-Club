@@ -4,10 +4,7 @@ import com.dev.Food_Club.DTO.RestaurantDto;
 import com.dev.Food_Club.Service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,7 +14,7 @@ public class RestaurantController {
 
     @Autowired
     RestaurantService restaurantService;
-    @GetMapping(path="/restaurant")
+    @GetMapping("/restaurant")
     public ResponseEntity<List<RestaurantDto>> getRestaurant(
             @RequestParam String location){
 
@@ -26,5 +23,11 @@ public class RestaurantController {
     }
 
 
+    @GetMapping("/restaurant/{id}")
+
+    public ResponseEntity<RestaurantDto> getRestaurantDetails(@PathVariable Long id){
+
+        return ResponseEntity.ok(restaurantService.getRestaurantDetailsWithManu(id));
+    }
 
 }

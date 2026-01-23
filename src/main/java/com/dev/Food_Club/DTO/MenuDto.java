@@ -12,18 +12,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class MenuDto {
 
-
     private Long id;
-
     private String name;
-
-
     private int halfPlate;
-
     private int fullPlate;
-
     private double halfPrice;
-
     private double fullPrice;
 
     public MenuDto(){}
@@ -75,10 +68,5 @@ public class MenuDto {
     public void setFullPrice(double fullPrice) {
         this.fullPrice = fullPrice;
     }
-
-
-
-
-
 
 }
