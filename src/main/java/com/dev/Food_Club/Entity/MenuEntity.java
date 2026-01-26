@@ -22,6 +22,10 @@ public class MenuEntity {
     @JoinColumn(name = "restaurant_id_fk",nullable = false)
     private RestaurantEntity restaurant;
 
+
+//    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    private OrderEntity orderEntity;
+
     public void setRestaurant(RestaurantEntity restaurant) {
         this.restaurant = restaurant;
     }

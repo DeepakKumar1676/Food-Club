@@ -11,6 +11,21 @@ public class RestaurantResponseDto {
     private Long restaurantId;
     private String restaurantname;
     private List<MenuDto> menuList;
+public RestaurantResponseDto(){}
+
+    public String getRestaurantname() {
+        return restaurantname;
+    }
+
+    public List<MenuDto> getMenuList() {
+        return menuList;
+    }
+
+    public Long getRestaurantId() {
+        return restaurantId;
+    }
+
+
 
     public void setMenuList(List<MenuDto> menuList) {
         this.menuList = menuList;
