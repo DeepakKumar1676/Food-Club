@@ -12,6 +12,8 @@ import com.dev.Food_Club.enums.PaymentStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 
 public class PaymentService {
@@ -43,6 +45,7 @@ public class PaymentService {
         entity.setGrandTotal(menuEntity.getTotalAmount());
         entity.setSelectedMenuId(paymentRequest.getSelectedMenueId());
         entity.setItemName(menuEntity.getName());
+        entity.setTime(LocalDateTime.now());
         paymentRepository.save(entity);
 
         PaymentResponseDto responseDto =new PaymentResponseDto();
@@ -54,6 +57,7 @@ public class PaymentService {
         responseDto.setGrandTotal(entity.getGrandTotal());
         responseDto.setSelectedMenuId(entity.getSelectedMenuId());
         responseDto.setItemName(entity.getItemName());
+        responseDto.setTime(entity.getTime());
 
         return responseDto;
 

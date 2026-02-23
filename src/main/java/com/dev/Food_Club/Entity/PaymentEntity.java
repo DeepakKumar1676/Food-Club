@@ -5,6 +5,7 @@ import com.dev.Food_Club.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -21,7 +22,7 @@ public class PaymentEntity {
 
     private Long restaurnatId;
     private Double grandTotal;
-    private Integer discount;
+    private Integer  discount;
 
     private String itemName;
 
@@ -32,5 +33,6 @@ public class PaymentEntity {
     private PaymentMethod paymentMethod;
 
     private Long selectedMenuId;
+    private LocalDateTime time;
 
 }

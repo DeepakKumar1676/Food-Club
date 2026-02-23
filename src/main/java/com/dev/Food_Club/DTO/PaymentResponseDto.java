@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 @Setter
 @Getter
@@ -22,5 +23,6 @@ public class PaymentResponseDto {
     private PaymentMethod paymentMethod;
     private Long selectedMenuId;
     private String itemName;
+    private LocalDateTime time;
 
 }
