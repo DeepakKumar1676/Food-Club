@@ -8,7 +8,6 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,18 +20,21 @@ public class PaymentEntity {
     private UUID paymentId;
 
     private Long restaurnatId;
-    private Double grandTotal;
-    private Integer  discount;
-
+    private Long selectedMenuId;
     private String itemName;
-
-    @Enumerated(EnumType.STRING)
-    private PaymentStatus paymentStatus;
+    private Integer itemQuantity;
+    private Double itemPrice;
+    private Double totalAmount;
+    @Column(name="discount(%)")
+    private Integer discount;
+    private Double grandTotal;
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
-    private Long selectedMenuId;
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentStatus;
+
     private LocalDateTime time;
 
 }

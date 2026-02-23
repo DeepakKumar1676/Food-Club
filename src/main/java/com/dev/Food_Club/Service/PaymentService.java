@@ -37,27 +37,38 @@ public class PaymentService {
                 .orElseThrow(()->new RuntimeException("selectedMenuId is not found"));
 
        PaymentEntity entity=new PaymentEntity();
+        Integer discount=paymentRequest.getDiscount();
+
+       System.out.println("discount passing in the payment request :"+discount);
 
         entity.setRestaurnatId(restaurant.getRestaurantId());
         entity.setPaymentMethod(paymentRequest.getPaymentMethod());
         entity.setPaymentStatus(PaymentStatus.SUCCESS);
-        entity.setDiscount(10);
-        entity.setGrandTotal(menuEntity.getTotalAmount());
+        int RemainingPercentage=100-paymentRequest.getDiscount();
+        entity.setDiscount(paymentRequest.getDiscount());
+        entity.setGrandTotal(menuEntity.getTotalAmount()*RemainingPercentage/100);
+        entity.setItemPrice(menuEntity.getPrice());
+        entity.setTotalAmount(menuEntity.getTotalAmount());
+        entity.setItemQuantity(menuEntity.getQuantity());
         entity.setSelectedMenuId(paymentRequest.getSelectedMenueId());
         entity.setItemName(menuEntity.getName());
         entity.setTime(LocalDateTime.now());
         paymentRepository.save(entity);
 
         PaymentResponseDto responseDto =new PaymentResponseDto();
+
         responseDto.setPaymentId(entity.getPaymentId());
         responseDto.setRestaurnatId(entity.getRestaurnatId());
         responseDto.setPaymentStatus(entity.getPaymentStatus());
         responseDto.setPaymentMethod(entity.getPaymentMethod());
-        responseDto.setDiscount(10);
+        responseDto.setDiscount(entity.getDiscount());
         responseDto.setGrandTotal(entity.getGrandTotal());
         responseDto.setSelectedMenuId(entity.getSelectedMenuId());
         responseDto.setItemName(entity.getItemName());
         responseDto.setTime(entity.getTime());
+        responseDto.setTotalAmount(entity.getTotalAmount());
+        responseDto.setItemQuantity(entity.getItemQuantity());
+        responseDto.setItemPrice(entity.getItemPrice());
 
         return responseDto;
 

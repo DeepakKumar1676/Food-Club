@@ -18,6 +18,9 @@ public class PaymentResponseDto {
     private UUID paymentId;
     private Long restaurnatId;
     private Double grandTotal;
+    private Double itemPrice;
+    private Integer itemQuantity;
+    private Double totalAmount;
     private Integer discount;
     private PaymentStatus paymentStatus;
     private PaymentMethod paymentMethod;

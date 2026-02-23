@@ -11,5 +11,6 @@ public class PaymentRequestDto {
     @JsonProperty("selectedMenuId")
     private Long  selectedMenueId;
     private PaymentMethod paymentMethod;
+    private Integer discount;
 
 }
